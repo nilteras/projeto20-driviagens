@@ -21,5 +21,5 @@ export async function GetFlights(req, res) {
 
   const flights = await flightService.getFlights(origin, destination, smallerDate, biggerDate)
 
-  res.status(httpStatus.OK).send(flights)
+  res.status(httpStatus.OK).send(flights.rows)
 }

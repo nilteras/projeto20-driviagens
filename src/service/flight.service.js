@@ -51,7 +51,7 @@ async function getFlights(origin, destination, smallerDate, biggerDate) {
 
 
     const flights = await flightRepository.getFlightsDB(origin, destination, smallerDate, biggerDate)
-
+    console.log(flights)
     return flights
 }
 

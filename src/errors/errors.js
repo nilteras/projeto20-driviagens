@@ -26,4 +26,11 @@ function unprocessableEntity(resource) {
 	}
 }
 
-export const errors = { joi, notFound, errorConflitct, unprocessableEntity }
+function tooManyResults(){
+    return {
+        type: "internalServerError",
+        message: `Too Many Results`
+    }
+}
+
+export const errors = { joi, notFound, errorConflitct, unprocessableEntity, tooManyResults}

@@ -9,3 +9,12 @@ export async function createPassenger(req, res) {
 
   res.sendStatus(httpStatus.CREATED)
 }
+
+export async function getPassengersQtyTravels (req, res) {
+  const name = req.query.name || ""
+
+  const passengers = await passengerService.getPassengersQtyTravelsService(name)
+
+  res.status(httpStatus.OK).send(passengers)
+  
+}

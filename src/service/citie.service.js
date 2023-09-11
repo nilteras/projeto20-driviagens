@@ -1,11 +1,11 @@
-import { errorConflitct } from "../errors/conflict.js";
+import { errors } from "../errors/errors.js";
 import { citieRepository } from "../repository/citie.repository.js";
 
 async function PostCitie(name) {
 
     const citieExist = await citieRepository.getCitieDB(name)
 
-    if (citieExist) throw errorConflitct("Cidade")
+    if (citieExist) throw errors.errorConflitct("Cidade")
 
     return citieRepository.createCitieDB(name)
 

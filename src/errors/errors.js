@@ -12,4 +12,11 @@ function notFound(resource = "Item") {
     }
 }
 
-export const errors = { joi, notFound }
+function errorConflitct (resource){
+    return {
+        type: "conflict",
+        message: `${resource} existente`
+    }
+}
+
+export const errors = { joi, notFound, errorConflitct }

@@ -1,8 +1,11 @@
 import { Router } from "express";
+import { CreateFlight } from "../controller/flight.controller.js";
+import { schemaValidation } from "../middlewares/schemaValidation.js";
+import { flightSchema } from "../schemas/flights.schema.js";
 
 const flightsRouter = Router()
 
-flightsRouter.post('/flights')
+flightsRouter.post('/flights',schemaValidation(flightSchema), CreateFlight)
 flightsRouter.get('/flights')
 
 export default flightsRouter

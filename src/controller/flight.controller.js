@@ -12,3 +12,14 @@ export async function CreateFlight(req, res) {
   res.sendStatus(httpStatus.CREATED)
 
 }
+
+export async function GetFlights(req, res) {
+
+  const { origin, destination } = req.query
+  const smallerDate = req.query["smaller-date"]
+  const biggerDate = req.query["bigger-date"]
+
+  const flights = await flightService.getFlights(origin, destination, smallerDate, biggerDate)
+
+  res.status(httpStatus.OK).send(flights)
+}

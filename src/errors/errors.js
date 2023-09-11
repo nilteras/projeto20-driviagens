@@ -33,4 +33,11 @@ function tooManyResults(){
     }
 }
 
-export const errors = { joi, notFound, errorConflitct, unprocessableEntity, tooManyResults}
+function badRequestError (resource) {
+    return {
+        type: "badRequest",
+        message: `${resource}`
+    }
+}
+
+export const errors = { joi, notFound, errorConflitct, unprocessableEntity, tooManyResults, badRequestError }

@@ -6,6 +6,7 @@ export async function CreateFlight(req, res) {
 
   const { origin, destination, date } = req.body
 
+  await flightService.validateFlightDate(date)
   await flightService.PostFlight(origin, destination, date)
 
   res.sendStatus(httpStatus.CREATED)

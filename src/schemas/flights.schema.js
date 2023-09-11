@@ -12,9 +12,9 @@ export const flightSchema = joi.object({
         'number.base': `Destination é um campo do tipo número`,
         'any.required': `O campo "Destination" é obrigatório.`
     }),
-    date: joi.date().format("DD-MM-YYYY").required().messages({
-        'data.base': `Data é um campo do tipo data.`,
-        'date.format': `O formato da data de lançamento deve ser: DD-MM-YYYY`,
+    date: joi.string().pattern(new RegExp(/^\d{2}-\d{2}-\d{4}$/)).required().messages({
+        'string.base': `Data é um campo do tipo texto.`,
+        'date.pattern': `O formato da data de lançamento deve ser: DD-MM-YYYY`,
         'any.required': `O campo "Data" é obrigatório.`
     })
 })

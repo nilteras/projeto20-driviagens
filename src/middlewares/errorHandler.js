@@ -15,5 +15,9 @@ export function errorHandler(error, req, res, next) {
         return res.status(httpStatus.NOT_FOUND).send(error.message)
     }
 
+    if (error.type === "UnprocessableEntity") {
+        return res.status(httpStatus.UNPROCESSABLE_ENTITY).send(error.message);
+      }
+
     return res.status(httpStatus.INTERNAL_SERVER_ERROR).send("Ocorreu um erro desconhecido")
 }

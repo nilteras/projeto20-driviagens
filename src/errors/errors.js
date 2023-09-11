@@ -19,4 +19,11 @@ function errorConflitct (resource){
     }
 }
 
-export const errors = { joi, notFound, errorConflitct }
+function unprocessableEntity(resource) {
+	return {
+	  type: "UnprocessableEntity",
+	  message: `${resource ? resource : "It"}`
+	}
+}
+
+export const errors = { joi, notFound, errorConflitct, unprocessableEntity }

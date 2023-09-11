@@ -1,14 +1,16 @@
+import { errors } from "../errors/errors.js";
 import { travelRepository } from "../repository/travel.repository.js";
 
 
-function PostTravel(passengerId, flightId) {
+async function PostTravel(passengerId, flightId) {
 
-    if (!passengerId || !flightId) {
-        return res.sendStatus(400);
-    }
-    
+   const passengerExist = await travelRepository.getPassengerDB(passengerId)
+   if(!passengerExist) throw errors.notFound("Passageiro")
 
-    return travelRepository.TravelDB(passengerId, flightId)
+   const flightExist = await travelRepository.getFlightDB(flightId)
+   if(!flightExist) throw errors.notFound("Vôo")
+
+   return travelRepository.createTravelDB(passengerId, flightId)
 
 }
 

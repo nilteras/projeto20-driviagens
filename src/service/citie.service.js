@@ -1,12 +1,13 @@
+import { errorConflitct } from "../errors/conflict.js";
 import { citieRepository } from "../repository/citie.repository.js";
 
-function PostCitie(name) {
+async function PostCitie(name) {
 
-    if (!name ) {
-        return res.sendStatus(400);
-    }
+    const citieExist = await citieRepository.getCitieDB(name)
 
-    return citieRepository.CitieDB(name)
+    if (citieExist) throw errorConflitct("Cidade")
+
+    return citieRepository.createCitieDB(name)
 
 }
 
